@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --watch",
-    "build": "webpack"
+    "build": "webpack",
+    "build:server": "NODE_ENV=server webpack",
+    "start": "node ./server/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "webpack": "^1.13.1"
   },
   "dependencies": {
-    "preact": "^4.8.0"
+    "preact": "^4.8.0",
+    "preact-render-to-string": "^2.6.0"
   }
 }
