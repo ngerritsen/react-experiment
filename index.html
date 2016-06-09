@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title>Preact experiment</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="public/bundle.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    .service-plans {
+      padding: 0;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .service-plan {
+      background-color: #eee;
+      border-radius: 4px;
+      display: block;
+      list-style: none;
+      padding: 12px 16px;
+      margin-bottom: 6px;
+    }
+
+    .service-plan:hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+
+    .service-plan.is-selected {
+      background-color: #a4d1ef;
+    }
+  </style>
+</body>
+</html>
