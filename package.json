@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --watch",
-    "build": "webpack",
-    "build:server": "NODE_ENV=server webpack",
-    "start": "node ./server/bundle.js"
+    "watch:server": "babel src --out-dir lib --watch",
+    "build": "npm run build:client; npm run build:server",
+    "build:client": "webpack",
+    "build:server": "babel src --out-dir lib",
+    "start": "node ./lib/server.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   },
   "homepage": "https://github.com/ngerritsen/react-experiment#readme",
   "devDependencies": {
+    "babel-cli": "^6.9.0",
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",

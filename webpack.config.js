@@ -1,5 +1,3 @@
-var env = process.env.NODE_ENV
-
 const config = {
   entry: './src/client.js',
   output: {
@@ -10,17 +8,10 @@ const config = {
     loaders: [
       {
         test: /.js$/,
-        loader: 'babel'
+        loader: 'babel',
+        ignore: /node_modules/
       }
     ]
-  }
-}
-
-if (env === 'server') {
-  config.entry = './src/server.js',
-  config.output = {
-    path: './server',
-    filename: 'bundle.js'
   }
 }
 
