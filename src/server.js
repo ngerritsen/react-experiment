@@ -1,22 +1,22 @@
 import { h } from 'preact'
 import render from 'preact-render-to-string'
-import dnode from 'dnode'
+import express from 'express';
 import { createStore } from 'redux'
 
 import { selectPlan } from './shared/actions'
 import ServicePlansContainer from './shared/containers/service-plans-container'
 import reducer from './shared/reducer'
-import config from '../etc/config'
 
+const app = express();
 const store = createStore(reducer)
 
-const server = dnode({
-    render: (cb) => {
-      const html = render(<ServicePlansContainer store={store} selectPlan={selectPlan}/>)
-      const state = JSON.stringify(store.getState())
+app.get('/render', function (req, res) {
+  const html = render(<ServicePlansContainer store={store} selectPlan={selectPlan}/>)
+  const state = JSON.stringify(store.getState())
 
-      cb({ html, state })
-    }
-})
+  res.json({ html, state })
+});
 
-server.listen(config.dnodePort)
+app.listen(3000, function () {
+  console.log('React render service listening on port 3000!');
+});
