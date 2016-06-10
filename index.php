@@ -1,6 +1,6 @@
 <?php
-$result = file_get_contents('http://localhost:3000/render');
-$app = json_decode($result)
+require(__DIR__ . '/src/php-client/ReactWidget.php');
+$servicePlansWidget = new ReactWidget('service-plans');
 ?>
 
 <html>
@@ -9,10 +9,7 @@ $app = json_decode($result)
     <link rel="stylesheet" href="public/style.css">
 </head>
 <body>
-    <div id="root">
-        <?= $app->html ?>
-    </div>
-    <script>window.initialState = <?= $app->state ?></script>
+    <?php $servicePlansWidget->render() ?>
     <script src="public/bundle.js"></script>
 </body>
 </html>

@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "watch:client": "webpack --watch; npm run copy-assets",
-    "watch:server": "babel src --out-dir lib --watch",
     "dist": "npm run build:server; npm run dist:client; npm run copy-assets",
     "dist:client": "NODE_ENV=production webpack",
-    "copy-assets": "cp src/style.css public",
+    "copy-assets": "cp src/assets/* public",
     "build": "npm run build:client; npm run build:server; npm run copy-assets",
     "build:client": "webpack",
-    "build:server": "babel src --out-dir lib",
-    "start": "node ./lib/server.js",
+    "build:server": "babel src/shared --out-dir lib/shared; babel src/server --out-dir lib/server",
+    "start": "node ./lib/server",
     "start:client": "php -S localhost:4000"
   },
   "repository": {

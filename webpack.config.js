@@ -2,7 +2,7 @@ const webpack = require('webpack')
 
 const env = process.env.NODE_ENV
 const config = {
-  entry: './src/client.js',
+  entry: './src/client/index.js',
   output: {
     path: './public',
     filename: 'bundle.js'

@@ -4,21 +4,19 @@ import ServicePlans from '../components/service-plans'
 export default class ServicePlansContainer extends Component {
   constructor(props) {
     super(props)
-    const { store, selectPlan } = this.props
-
+    const store = this.props.store
     this.state = store.getState()
-    this.selectPlan = index => store.dispatch(selectPlan(index))
     store.subscribe(() => this.setState(store.getState()))
   }
 
   render() {
-    const state = this.state
-    const plans = state.plans.map((plan, index) => ({
+    const { selected, plans } = this.state
+    const enhancedPlans = this.state.plans.map((plan, index) => ({
       ...plan,
-      selected: state.selected === index,
+      selected: this.state.selected === index,
       index
     }))
 
-    return <ServicePlans plans={plans} selectPlan={this.selectPlan}/>
+    return <ServicePlans plans={enhancedPlans} selectPlan={this.props.selectPlan}/>
   }
 }
