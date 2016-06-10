@@ -4,15 +4,16 @@
   "description": "Super secret!",
   "main": "index.js",
   "scripts": {
-    "watch:client": "webpack --watch",
+    "watch:client": "webpack --watch; npm run copy-assets",
     "watch:server": "babel src --out-dir lib --watch",
-    "dist": "npm run build:server; npm run dist:client",
+    "dist": "npm run build:server; npm run dist:client; npm run copy-assets",
     "dist:client": "NODE_ENV=production webpack",
-    "build": "npm run build:client; npm run build:server",
+    "copy-assets": "cp src/style.css public",
+    "build": "npm run build:client; npm run build:server; npm run copy-assets",
     "build:client": "webpack",
     "build:server": "babel src --out-dir lib",
     "start": "node ./lib/server.js",
-    "test:server": "node rmi-client-test.js"
+    "start:client": "node remote-client.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,8 @@
   },
   "dependencies": {
     "dnode": "^1.2.2",
+    "ejs": "^2.4.2",
+    "express": "^4.13.4",
     "preact": "^4.8.0",
     "preact-render-to-string": "^2.6.0",
     "redux": "^3.5.2"
