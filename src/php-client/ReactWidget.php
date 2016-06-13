@@ -4,7 +4,7 @@ class ReactWidget
   private $widget = '';
 
   public function __construct($name) {
-    $result = file_get_contents('http://localhost:3000/' . $name);
+    $result = file_get_contents('http://localhost:9001/' . $name);
     $this->widget = json_decode($result);
   }
 
